@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./Components/Header";
+import { Route, Routes } from "react-router-dom";
+import Blogs from "./pages/Blogs";
+import Login from "./pages/login";
+import Register from "./pages/Register";
+import UserBlogs from "./pages/UserBlogs";
+import BlogDetails from "./pages/BlogDetails";
+import { Toaster } from "react-hot-toast";
+import CreateBlog from "./pages/Createblog";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Toaster />
+      <Routes >
+        <Route path="/" element={<Blogs />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/my-blogs" element={<UserBlogs />} />
+        <Route path="/blog-details/:id" element={<BlogDetails />} />
+        <Route path="/create-blog" element={<CreateBlog />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Routes>
+    </>
   );
 }
 
